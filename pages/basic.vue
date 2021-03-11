@@ -1,7 +1,7 @@
 <template>
   <div class="fluid">
-    <h1 class="text-center text-bg-gray-900 mb-6">Sign Up</h1>
-    <form class="mb-6" action="/contact" method="post">
+    <h1 class="text-center text-bg-gray-900">Sign Up</h1>
+    <form class="mb-6" @submit.prevent action="/contact">
       <p>
         <label
           for="gender"
@@ -10,14 +10,14 @@
         >
         <select
           id="gender"
-          v-model="gender"
-          name="movie"
+          name="gender"
           class="border py-2 px-3 text-grey-darkest"
+          v-model="selected"
           required
         >
           <option>Male</option>
           <option>Female</option>
-          <option>Other</option>
+          <option>Na</option>
         </select>
       </p>
 
@@ -28,10 +28,11 @@
           >First Name</label
         >
         <input
+          id="first_name"
           class="border py-2 px-3 text-grey-darkest"
           type="text"
           name="first_name"
-          id="first_name"
+          v-model="firstName"
           required
         />
       </div>
@@ -42,16 +43,17 @@
           >Last Name</label
         >
         <input
+          id="last_name"
           class="border py-2 px-3 text-grey-darkest"
           type="text"
           name="last_name"
-          id="last_name"
+          v-model="lastName"
           required
         />
       </div>
       <button
         class="block bg-gray-900 hover:bg-gray-600 text-white uppercase text-lg mx-auto p-4 rounded"
-        type="submit"
+        @click="addInfo"
       >
         Next Step
       </button>
@@ -60,7 +62,25 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+export default {
+  computed: mapState({
+    clientInfo: (state) => state.clientInfo,
+  }),
+  methods: {
+    // TODO add gender
+    addInfo() {
+      this.$store.commit('clientInfo/setFirstName', this.firstName)
+      this.$store.commit('clientInfo/setLastName', this.lastName)
+      this.$store.commit('clientInfo/setGender', this.selected)
+      this.$axios.post('/api/save', {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        gender: this.selected,
+      })
+    },
+  },
+}
 </script>
 
 <style></style>

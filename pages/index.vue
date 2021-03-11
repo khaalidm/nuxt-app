@@ -5,7 +5,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  beforeCreate() {
+    this.$store.commit('initialiseStore')
+  },
+}
 </script>
 
 <style>

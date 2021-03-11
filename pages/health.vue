@@ -1,5 +1,5 @@
 <template>
-  <form class="mb-4" action="/health" method="post">
+  <form class="mb-4" action="/finalize" method="post">
     <div class="flex flex-col mb-4">
       <label
         class="mb-2 uppercase font-bold text-lg text-grey-darkest"
@@ -7,10 +7,11 @@
         >Enter your height in meters:</label
       >
       <input
+        id="height"
         class="border py-2 px-3 text-grey-darkest"
         type="number"
-        id="height"
         name="height"
+        v-model="height"
         min="0"
         step="any"
         required
@@ -23,17 +24,30 @@
         >Enter your weight in Kilograms:</label
       >
       <input
+        id="weight"
         class="border py-2 px-3 text-grey-darkest"
         type="number"
-        id="height"
-        name="height"
+        name="weight"
+        v-model="weight"
         min="0"
         step="any"
       />
     </div>
+    <label
+      class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+      for="phone"
+      >Have you recently been sick :</label
+    >
+    <input
+      id="isSick"
+      type="radio"
+      name="isSick"
+      v-model="isSick"
+      value="true"
+    />
     <button
       class="block bg-gray-900 hover:bg-gray-600 text-white uppercase text-lg mx-auto p-4 rounded"
-      type="submit"
+      @click="saveData"
     >
       Next Step
     </button>
@@ -41,7 +55,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    saveData() {
+      this.$store.commit('clientInfo/setHeight', this.height)
+      this.$store.commit('clientInfo/setWeight', this.weight)
+    },
+  },
+}
 </script>
 
 <style></style>
