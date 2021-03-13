@@ -42,6 +42,12 @@
 
 <script>
 export default {
+  data() {
+    return {
+      phoneNumber: '',
+      email: '',
+    }
+  },
   methods: {
     saveData() {
       this.$store.commit('clientInfo/setPhoneNumber', this.phoneNumber)

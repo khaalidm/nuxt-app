@@ -7,7 +7,7 @@
     <label for="acceptTerms">Accept Terms</label><br />
     <button
       class="block bg-gray-900 hover:bg-gray-600 text-white uppercase text-lg mx-auto p-4 rounded"
-      type="submit"
+      @click="persistData"
     >
       Finalize
     </button>
@@ -15,7 +15,23 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    persistData() {
+      this.$axios.post('/api/user', {
+        firstName: localStorage.getItem('firstName'),
+        lastName: localStorage.getItem('lastName'),
+        gender: localStorage.getItem('gender'),
+        phoneNumber: localStorage.getItem('phoneNumber'),
+        email: localStorage.getItem('email'),
+        height: localStorage.getItem('height'),
+        weight: localStorage.getItem('weight'),
+        isSick: localStorage.getItem('isSick'),
+      })
+      localStorage.clear()
+    },
+  },
+}
 </script>
 
 <style></style>

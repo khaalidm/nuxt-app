@@ -1,7 +1,7 @@
 <template>
   <div class="fluid">
     <h1 class="text-center text-bg-gray-900">Sign Up</h1>
-    <form class="mb-6" @submit.prevent action="/contact">
+    <form class="mb-6" action="/contact">
       <p>
         <label
           for="gender"
@@ -12,7 +12,7 @@
           id="gender"
           name="gender"
           class="border py-2 px-3 text-grey-darkest"
-          v-model="selected"
+          v-model="gender"
           required
         >
           <option>Male</option>
@@ -62,22 +62,19 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
-  computed: mapState({
-    clientInfo: (state) => state.clientInfo,
-  }),
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      gender: '',
+    }
+  },
   methods: {
-    // TODO add gender
     addInfo() {
       this.$store.commit('clientInfo/setFirstName', this.firstName)
       this.$store.commit('clientInfo/setLastName', this.lastName)
-      this.$store.commit('clientInfo/setGender', this.selected)
-      this.$axios.post('/api/save', {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        gender: this.selected,
-      })
+      this.$store.commit('clientInfo/setGender', this.gender)
     },
   },
 }

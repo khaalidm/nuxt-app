@@ -56,10 +56,21 @@
 
 <script>
 export default {
+  data() {
+    return {
+      height: '',
+      weight: '',
+      isSick: '',
+    }
+  },
   methods: {
     saveData() {
       this.$store.commit('clientInfo/setHeight', this.height)
       this.$store.commit('clientInfo/setWeight', this.weight)
+      if (this.isSick === '') {
+        this.isSick = false
+      }
+      this.$store.commit('clientInfo/setIsSick', this.isSick)
     },
   },
 }
