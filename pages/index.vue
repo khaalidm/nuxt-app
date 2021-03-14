@@ -1,17 +1,23 @@
 <template>
   <div class="container">
-    <h1>Front Page</h1>
+    <button
+      class="block bg-gray-900 hover:bg-gray-600 text-white uppercase text-lg mx-auto p-4 rounded"
+      type="button"
+      @click="signUp"
+    >
+      Sign Up
+    </button>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    signUp() {
+      this.$router.push('basic')
+    },
+  },
+}
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-</style>
+<style></style>
