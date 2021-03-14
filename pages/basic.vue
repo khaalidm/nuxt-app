@@ -10,9 +10,9 @@
         >
         <select
           id="gender"
+          v-model="gender"
           name="gender"
           class="border py-2 px-3 text-grey-darkest"
-          v-model="gender"
           required
         >
           <option>Male</option>
@@ -29,10 +29,11 @@
         >
         <input
           id="first_name"
+          v-model="firstName"
           class="border py-2 px-3 text-grey-darkest"
           type="text"
           name="first_name"
-          v-model="firstName"
+          placeholder="Jhon"
           required
         />
       </div>
@@ -44,10 +45,11 @@
         >
         <input
           id="last_name"
+          v-model="lastName"
           class="border py-2 px-3 text-grey-darkest"
           type="text"
           name="last_name"
-          v-model="lastName"
+          placeholder="Doe"
           required
         />
       </div>

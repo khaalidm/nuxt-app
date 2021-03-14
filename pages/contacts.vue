@@ -23,7 +23,7 @@
         <td>
           <button
             class="bg-gray-900 hover:bg-gray-600 text-white"
-            v-on:click="deleteUser(user.id)"
+            @click="deleteUser(user.id)"
           >
             Delete
           </button>
@@ -41,11 +41,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'View Contacts',
-    }
-  },
   data() {
     return {
       users: [],
@@ -56,15 +51,21 @@ export default {
       'http://localhost:3000/api/user/list'
     ).then((res) => res.json())
   },
-  methods: {
-    async deleteUser(id) {
-      await this.$axios.post('/api/user/delete', { userId: id }).then(() => {
-        this.$fetch()
-      })
-    },
+  head() {
+    return {
+      title: 'View Contacts',
+    }
   },
   mounted() {
     this.$fetch()
+  },
+  methods: {
+    async deleteUser(id) {
+      await this.$axios.post('/api/user/delete', { userId: id }).then(() => {
+        console.log("Hey I'm here")
+        this.$fetch()
+      })
+    },
   },
 }
 </script>

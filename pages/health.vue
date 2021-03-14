@@ -8,10 +8,10 @@
       >
       <input
         id="height"
+        v-model="height"
         class="border py-2 px-3 text-grey-darkest"
         type="number"
         name="height"
-        v-model="height"
         min="0"
         step="any"
         required
@@ -25,10 +25,10 @@
       >
       <input
         id="weight"
+        v-model="weight"
         class="border py-2 px-3 text-grey-darkest"
         type="number"
         name="weight"
-        v-model="weight"
         min="0"
         step="any"
       />
@@ -40,9 +40,9 @@
     >
     <input
       id="isSick"
+      v-model="isSick"
       type="radio"
       name="isSick"
-      v-model="isSick"
       value="true"
     />
     <button

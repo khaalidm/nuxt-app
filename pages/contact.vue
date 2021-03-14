@@ -8,10 +8,11 @@
       >
       <input
         id="phone"
+        v-model="phoneNumber"
         class="border py-2 px-3 text-grey-darkest"
         type="tel"
         name="phone"
-        v-model="phoneNumber"
+        placeholder="0112586541"
         pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
       />
     </div>
@@ -24,10 +25,11 @@
       >
       <input
         id="email"
+        v-model="email"
         class="border py-2 px-3 text-grey-darkest"
         type="email"
         name="email"
-        v-model="email"
+        placeholder="example@mail.com"
         required
       />
     </div>
