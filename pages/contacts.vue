@@ -60,10 +60,14 @@ export default {
     this.$fetch()
   },
   methods: {
+    refresh() {
+      this.$fetch()
+      // this is an ugly solution, couldn't find an alternative to location.reload
+      location.reload()
+    },
     async deleteUser(id) {
       await this.$axios.post('/api/user/delete', { userId: id }).then(() => {
-        console.log("Hey I'm here")
-        this.$fetch()
+        this.refresh()
       })
     },
   },

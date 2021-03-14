@@ -1,5 +1,5 @@
 <template>
-  <form class="mb-4" action="/finalize" method="post">
+  <form class="mb-4" action="/finalize">
     <div class="flex flex-col mb-4">
       <label
         class="mb-2 uppercase font-bold text-lg text-grey-darkest"
